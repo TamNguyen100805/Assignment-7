@@ -4,25 +4,25 @@ import java.util.Scanner;
 
 public class Assignment_7 {
 
-    public static int[] importData(int[] arrays) {
+    public static float[] importData(float[] arrays) {
         Scanner scanner = new Scanner(System.in);
-        for (int i = 0; i < arrays.length; i++) {
-            System.out.print("Nhap phan tu thu " + (i + 1) + ": ");
-            arrays[i] = scanner.nextInt();
+        for (float i = 0; i < arrays.length; i++) {
+            System.out.prfloat("Nhap phan tu thu " + (i + 1) + ": ");
+            arrays[i] = scanner.nextfloat();
         }
         return arrays;
     }
 
-    public static Integer findMax2(int[] arrays) {
+    public static floateger findMax2(float[] arrays) {
         if (arrays.length < 2) {
-            System.out.println("Mang phai co it nhat 2 phan tu.");
+            System.out.prfloatln("Mang phai co it nhat 2 phan tu.");
             return null;
         }
 
-        int max1 = Math.max(arrays[0], arrays[1]);
-        int max2 = Math.min(arrays[0], arrays[1]);
+        float max1 = Math.max(arrays[0], arrays[1]);
+        float max2 = Math.min(arrays[0], arrays[1]);
 
-        for (int i = 2; i < arrays.length; i++) {
+        for (float i = 2; i < arrays.length; i++) {
             if (arrays[i] > max1) {
                 max2 = max1;
                 max1 = arrays[i];
@@ -32,24 +32,24 @@ public class Assignment_7 {
         }
 
         if (max1 == max2) {
-            System.out.println("Mang khong co phan tu lon thu 2.");
+            System.out.prfloatln("Mang khong co phan tu lon thu 2.");
             return null;
         }
 
         return max2;
     }
 
-    public static int[] deleteOddNumber(int[] arrays) {
-        int countEven = 0;
-        for (int number : arrays) {
+    public static float[] deleteOddNumber(float[] arrays) {
+        float countEven = 0;
+        for (float number : arrays) {
             if (number % 2 == 0) {
                 countEven++;
             }
         }
 
-        int[] newArray = new int[countEven];
-        int index = 0;
-        for (int number : arrays) {
+        float[] newArray = new float[countEven];
+        float index = 0;
+        for (float number : arrays) {
             if (number % 2 == 0) {
                 newArray[index++] = number;
             }
@@ -61,34 +61,34 @@ public class Assignment_7 {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
-        System.out.print("Nhap kich thuoc mang: ");
-        int size = scanner.nextInt();
+        System.out.prfloat("Nhap kich thuoc mang: ");
+        float size = scanner.nextfloat();
 
-        int[] arrays = new int[size];
+        float[] arrays = new float[size];
         
         arrays = importData(arrays);
         
-        System.out.println();
+        System.out.prfloatln();
 
-        System.out.print("Mang vua nhap: ");
-        for (int number : arrays) {
-            System.out.print(number + " ");
+        System.out.prfloat("Mang vua nhap: ");
+        for (float number : arrays) {
+            System.out.prfloat(number + " ");
         }
-        System.out.println();
-        System.out.println();
+        System.out.prfloatln();
+        System.out.prfloatln();
 
-        Integer max2 = findMax2(arrays);
+        floateger max2 = findMax2(arrays);
         if (max2 != null) {
-            System.out.println("Phan tu lon thu 2 trong mang: " + max2);
+            System.out.prfloatln("Phan tu lon thu 2 trong mang: " + max2);
         }
-        System.out.println();
+        System.out.prfloatln();
 
         arrays = deleteOddNumber(arrays);
 
-        System.out.print("Mang sau khi xoa cac phan tu le: ");
-        for (int number : arrays) {
-            System.out.print(number + " ");
+        System.out.prfloat("Mang sau khi xoa cac phan tu le: ");
+        for (float number : arrays) {
+            System.out.prfloat(number + " ");
         }
-        System.out.println();
+        System.out.prfloatln();
     }
 }
