@@ -2,60 +2,55 @@ package BaiTapVeNha;
 
 import java.util.Scanner;
 
-public class ArrayOperations {
+public class Assignment_7 {
 
-    public static float[] importData(float[] arrays) {
+    public static int[] importData(int[] arrays) {
         Scanner scanner = new Scanner(System.in);
         for (int i = 0; i < arrays.length; i++) {
             System.out.print("Nhap phan tu thu " + (i + 1) + ": ");
-            arrays[i] = scanner.nextFloat();
+            arrays[i] = scanner.nextInt();
         }
         return arrays;
     }
 
-    public static void printData(float[] arrays) {
-        for (float number : arrays) {
-            System.out.print(number + " ");
-        }
-        System.out.println();
-    }
-
-    public static float findMax2(float[] arrays) {
+    public static Integer findMax2(int[] arrays) {
         if (arrays.length < 2) {
-            throw new IllegalArgumentException("Mang phai co it nhat 2 phan tu.");
+            System.out.println("Mang phai co it nhat 2 phan tu.");
+            return null;
         }
 
-        float max1 = Float.NEGATIVE_INFINITY;
-        float max2 = Float.NEGATIVE_INFINITY;
+        int max1 = Math.max(arrays[0], arrays[1]);
+        int max2 = Math.min(arrays[0], arrays[1]);
 
-        for (float number : arrays) {
-            if (number > max1) {
+        for (int i = 2; i < arrays.length; i++) {
+            if (arrays[i] > max1) {
                 max2 = max1;
-                max1 = number;
-            } else if (number > max2 && number != max1) {
-                max2 = number;
+                max1 = arrays[i];
+            } else if (arrays[i] > max2 && arrays[i] != max1) {
+                max2 = arrays[i];
             }
         }
 
-        if (max2 == Float.NEGATIVE_INFINITY) {
-            throw new IllegalArgumentException("Mang khong co phan tu lon thu 2.");
+        if (max1 == max2) {
+            System.out.println("Mang khong co phan tu lon thu 2.");
+            return null;
         }
 
         return max2;
     }
 
-    public static float[] deleteOddNumber(float[] arrays) {
+    public static int[] deleteOddNumber(int[] arrays) {
         int countEven = 0;
-        for (float number : arrays) {
-            if ((int) number % 2 == 0) {
+        for (int number : arrays) {
+            if (number % 2 == 0) {
                 countEven++;
             }
         }
 
-        float[] newArray = new float[countEven];
+        int[] newArray = new int[countEven];
         int index = 0;
-        for (float number : arrays) {
-            if ((int) number % 2 == 0) {
+        for (int number : arrays) {
+            if (number % 2 == 0) {
                 newArray[index++] = number;
             }
         }
@@ -69,22 +64,31 @@ public class ArrayOperations {
         System.out.print("Nhap kich thuoc mang: ");
         int size = scanner.nextInt();
 
-        float[] arrays = new float[size];
-
+        int[] arrays = new int[size];
+        
         arrays = importData(arrays);
+        
+        System.out.println();
 
-        System.out.print("Mảng vừa nhập: ");
-        printData(arrays);
-
-        try {
-            float max2 = findMax2(arrays);
-            System.out.println("Gia tri phan tu lon thu 2 trong mang: " + max2);
-        } catch (IllegalArgumentException e) {
-            System.out.println(e.getMessage());
+        System.out.print("Mang vua nhap: ");
+        for (int number : arrays) {
+            System.out.print(number + " ");
         }
+        System.out.println();
+        System.out.println();
+
+        Integer max2 = findMax2(arrays);
+        if (max2 != null) {
+            System.out.println("Phan tu lon thu 2 trong mang: " + max2);
+        }
+        System.out.println();
 
         arrays = deleteOddNumber(arrays);
+
         System.out.print("Mang sau khi xoa cac phan tu le: ");
-        printData(arrays);
+        for (int number : arrays) {
+            System.out.print(number + " ");
+        }
+        System.out.println();
     }
 }
