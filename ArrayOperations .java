@@ -2,7 +2,7 @@ package BaiTapVeNha;
 
 import java.util.Scanner;
 
-public class Assignment_7 {
+public class ArrayOperations {
 
     public static float[] importData(float[] arrays) {
         Scanner scanner = new Scanner(System.in);
